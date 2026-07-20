@@ -4,6 +4,14 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
+from sklearn.metrics import (
+    accuracy_score,
+    classification_report,
+    confusion_matrix
+)
+import joblib
+
+
 
 # Load processed dataset
 news_df = pd.read_csv("dataset/processed_news.csv")
@@ -46,3 +54,17 @@ y_pred = model.predict(X_test_vectorized)
 accuracy = accuracy_score(y_test, y_pred)
 
 print(f"Model Accuracy: {accuracy * 100:.2f}%")
+
+
+
+print("\nClassification Report")
+print(classification_report(y_test, y_pred))
+
+print("\nConfusion Matrix")
+print(confusion_matrix(y_test, y_pred))
+
+# Save the trained model and vectorizer
+joblib.dump(model, "model/model.pkl")
+joblib.dump(vectorizer, "model/vectorizer.pkl")
+
+print("Model saved successfully!")
