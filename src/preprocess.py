@@ -42,3 +42,16 @@ true_df["label"] = 1
 
 print(fake_df.head())
 print(true_df.head())
+
+
+# Merge fake and real datasets
+news_df = pd.concat([fake_df, true_df], axis=0)
+
+# Reset index
+news_df = news_df.reset_index(drop=True)
+
+print("\nMerged Dataset")
+print(news_df.head())
+
+print("\nDataset Shape:", news_df.shape)
+
