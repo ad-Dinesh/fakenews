@@ -86,6 +86,7 @@ def clean_text(text):
 
     return " ".join(words)
 
+news_df["text"] = news_df["text"].fillna("")
 news_df["text"] = news_df["text"].apply(clean_text)
 print(news_df["text"].head())
 
