@@ -55,3 +55,36 @@ print(news_df.head())
 
 print("\nDataset Shape:", news_df.shape)
 
+import re
+import string
+import nltk
+from nltk.corpus import stopwords
+
+nltk.download("stopwords")
+
+stop_words = set(stopwords.words("english"))
+
+def clean_text(text):
+    # Convert to lowercase
+    text = text.lower()
+
+    # Remove URLs
+    text = re.sub(r"http\S+|www\S+", "", text)
+
+    # Remove punctuation
+    text = text.translate(str.maketrans("", "", string.punctuation))
+
+    # Remove numbers
+    text = re.sub(r"\d+", "", text)
+
+    # Remove extra spaces
+    text = re.sub(r"\s+", " ", text).strip()
+
+    # Remove stopwords
+    words = text.split()
+    words = [word for word in words if word not in stop_words]
+
+    return " ".join(words)
+
+news_df["text"] = news_df["text"].apply(clean_text)
+print(news_df["text"].head())
