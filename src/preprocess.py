@@ -88,3 +88,10 @@ def clean_text(text):
 
 news_df["text"] = news_df["text"].apply(clean_text)
 print(news_df["text"].head())
+
+# Features and Labels
+X = news_df["text"]
+y = news_df["label"]
+
+print("Features Shape:", X.shape)
+print("Labels Shape:", y.shape)
