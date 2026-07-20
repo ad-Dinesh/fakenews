@@ -28,3 +28,17 @@ print(true_df.columns)
 
 print("\nMissing Values:")
 print(true_df.isnull().sum())
+
+# Dataset information
+print("\nFake Dataset Info")
+print(fake_df.info())
+
+print("\nTrue Dataset Info")
+print(true_df.info())
+
+# Add labels
+fake_df["label"] = 0
+true_df["label"] = 1
+
+print(fake_df.head())
+print(true_df.head())
