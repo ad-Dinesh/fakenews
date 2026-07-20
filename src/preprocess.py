@@ -95,3 +95,8 @@ y = news_df["label"]
 
 print("Features Shape:", X.shape)
 print("Labels Shape:", y.shape)
+
+# Save processed dataset
+news_df.to_csv("dataset/processed_news.csv", index=False)
+
+print("\nProcessed dataset saved successfully!")
