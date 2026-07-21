@@ -1,111 +1,213 @@
-# Fake News Detection 📰🔍
+# 📰 Fake News Detection using Machine Learning
 
-Classify news articles as **Real** or **Fake** in seconds — powered by TF-IDF + Logistic Regression, wrapped in a clean Streamlit UI.
+A Machine Learning and Natural Language Processing (NLP) project that classifies news articles as **Real** or **Fake** using **TF-IDF Vectorization** and **Logistic Regression**.
 
-`Python` `Scikit-learn` `NLTK` `Streamlit` `TF-IDF` `Logistic Regression`
-
----
-
-## Why this project?
-
-Misinformation spreads faster than fact-checkers can keep up. This project takes a classic, lightweight NLP approach — no heavyweight transformers, no GPU required — and still lands **~98% test accuracy**. Paste an article, get a verdict, get a confidence score. That's it.
-
-```
-Input:  "NASA successfully launched a new satellite to monitor climate change."
-Output: Real News ✅  |  Confidence: 97.81%
-```
+The application provides a simple Streamlit web interface where users can enter a news article and receive a prediction along with the model's confidence score.
 
 ---
 
-## How it works
+## 🚀 Features
 
-```
-raw text ──▶ clean & normalize ──▶ TF-IDF vectorize ──▶ Logistic Regression ──▶ label + confidence
-```
-
-1. **Ingest** — merge labeled Fake/Real news datasets
-2. **Clean** — lowercase, strip URLs, punctuation, numbers, stopwords
-3. **Vectorize** — TF-IDF turns text into weighted numeric features
-4. **Train** — Logistic Regression learns the decision boundary
-5. **Serve** — Streamlit app for instant predictions
+- Detects Fake and Real news articles
+- NLP-based text preprocessing
+- TF-IDF feature extraction
+- Logistic Regression classifier
+- Confidence score prediction
+- Streamlit web application
+- Clean and modular Python project structure
 
 ---
 
-## Results
+## 🛠️ Tech Stack
 
-| | Score |
-|---|---|
-| Training Accuracy | **98.34** |
-| **Testing Accuracy** | **98.43%** |
-
----
-
-## Get it running
-
-```bash
-git clone https://github.com/ad-Dinesh/fake-news-detection.git
-cd fake-news-detection
-pip install -r requirements.txt
-```
-
-Then walk the pipeline end to end:
-
-```bash
-python src/preprocess.py   # clean + merge the raw CSVs
-python src/train.py        # train + save the model
-python src/predict.py      # quick CLI sanity check
-streamlit run app.py       # launch the web app
-```
+- Python
+- Pandas
+- NumPy
+- Scikit-learn
+- NLTK
+- Joblib
+- Streamlit
 
 ---
 
-## What's inside
+## 📂 Project Structure
 
 ```
 Fake-News-Detection/
-├── dataset/            raw + processed news data
-├── model/               trained model.pkl + vectorizer.pkl
+│
+├── dataset/
+│   ├── Fake.csv
+│   ├── True.csv
+│   └── processed_news.csv
+│
+├── model/
+│   ├── model.pkl
+│   └── vectorizer.pkl
+│
 ├── src/
-│   ├── preprocess.py    cleans & merges the dataset
-│   ├── train.py         TF-IDF + Logistic Regression training
-│   └── predict.py       loads model, scores new text
-├── app.py                Streamlit interface
-└── requirements.txt
+│   ├── preprocess.py
+│   ├── train.py
+│   └── predict.py
+│
+├── app.py
+├── requirements.txt
+├── README.md
+└── .gitignore
 ```
 
 ---
 
-## The stack
+## 📊 Dataset
 
-- **Pandas / NumPy** — data wrangling
-- **NLTK** — stopword removal & text cleanup
-- **Scikit-learn** — TF-IDF vectorizer + Logistic Regression
-- **Joblib** — model persistence
-- **Streamlit** — the front end
+This project uses the **Fake and Real News Dataset** containing thousands of news articles labeled as Fake or Real.
 
----
+Dataset Columns
 
-## Dataset
-
-Built on the **Fake and Real News Dataset**, with columns: `title`, `text`, `subject`, `date`, `label`.
+- title
+- text
+- subject
+- date
+- label
 
 ---
 
-## Roadmap
+## ⚙️ Machine Learning Pipeline
 
-- [ ] Swap in BERT / RoBERTa for deeper contextual understanding
-- [ ] Real-time fact verification against trusted sources
-- [ ] Source credibility scoring
-- [ ] Multi-language support
-- [ ] Explainable predictions (which words tipped the model?)
+1. Load Dataset
+2. Merge Fake & Real datasets
+3. Data Cleaning
+4. Text Preprocessing
+5. TF-IDF Vectorization
+6. Train-Test Split
+7. Logistic Regression Training
+8. Model Evaluation
+9. Save Model
+10. Streamlit Deployment
 
 ---
 
-## Author
+## 🧹 Text Preprocessing
+
+The following preprocessing steps are applied:
+
+- Convert text to lowercase
+- Remove URLs
+- Remove punctuation
+- Remove numbers
+- Remove stopwords
+- Remove extra whitespace
+
+---
+
+## 🤖 Model
+
+Algorithm
+
+- Logistic Regression
+
+Feature Extraction
+
+- TF-IDF Vectorizer
+
+---
+
+## 📈 Model Performance
+
+| Metric | Value |
+|---------|------:|
+| Training Accuracy | **97.49%** |
+| Testing Accuracy | **98.43%** |
+
+---
+
+## ▶️ Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/ad-Dinesh/fake-news-detection.git
+```
+
+Move into the project
+
+```bash
+cd fake-news-detection
+```
+
+Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+Run preprocessing
+
+```bash
+python src/preprocess.py
+```
+
+Train the model
+
+```bash
+python src/train.py
+```
+
+Run prediction
+
+```bash
+python src/predict.py
+```
+
+Launch Streamlit App
+
+```bash
+streamlit run app.py
+```
+
+---
+
+## 💡 Example Prediction
+
+Input
+
+```
+NASA successfully launched a new satellite to monitor climate change.
+```
+
+Output
+
+```
+Prediction:
+Real News ✅
+
+Confidence:
+97.81%
+```
+
+
+
+## 🔮 Future Improvements
+
+- BERT / RoBERTa based classifier
+- Real-time fact verification
+- News source credibility analysis
+- Multi-language news detection
+- Explainable AI predictions
+
+---
+
+## 👨‍💻 Author
 
 **Dinesh Dharavath**
-[GitHub](https://github.com/ad-Dinesh) · [LinkedIn](https://www.linkedin.com/in/dinesh-dharavath-b176a2342/) · dineshdharavath03@gmail.com
+
+GitHub: https://github.com/ad-Dinesh
+
+LinkedIn:
+https://www.linkedin.com/in/dinesh-dharavath-b176a2342/
+
+Email:
+dineshdharavath03@gmail.com
 
 ---
 
-⭐ **If this was useful, a star helps more than you'd think.**
+## ⭐ If you found this project useful, consider giving it a star.
